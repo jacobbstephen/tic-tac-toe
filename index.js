@@ -37,9 +37,22 @@ boxes.forEach((box) => {
         }
        box.disabled = true;// to prevent changing of the box after clicking
        box.style.backgroundColor = "#02080c";
-       checkWinner();
+       let check= checkWinner();
+       if (check) checkFull();
     })
 })
+const checkFull = () =>{
+    let state = true;
+    for (let box of boxes) {
+        if (box.disabled === false) state = false;
+    }
+    if (state === true){
+        msg.innerText = "A tough fight ended in a draw!!";
+        reset.innerHTML = "RESTART";
+        msgContainer.classList.remove("hide");
+        heading.classList.add("hide");
+    }
+}
 const enableBox = () => {
     for (let box of boxes){
         box.disabled = false;
@@ -77,10 +90,12 @@ const checkWinner = () => {
             if(pos1value === pos2value && pos2value === pos3value ){
                 console.log("Winner is: ",pos1value );
                 showWinner(pos1value);
+                return false;
             }
         }
 
     }
+    return true;
 }
 reset.addEventListener("click",resetGame);
 
