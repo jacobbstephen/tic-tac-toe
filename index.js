@@ -17,16 +17,22 @@ const winPatterns = [
     [2,4,6],
     [0,4,8]
 ];
+var audioWin =  new Audio('./audio/appaluse.wav');
 const resetGame = () => {
     turnO = true;
     enableBox();
     msgContainer.classList.add("hide");
     reset.innerText = "RESET";
     heading.classList.remove("hide");
+    reset.classList.remove("hide");
+    audioWin.pause();
+    audioWin.currentTime = 0;
 }
 // add event listener to each box
 boxes.forEach((box) => {
     box.addEventListener("click",() =>{
+        var audioClick = new Audio('./audio/airTrim.wav');
+        audioClick.play();
         console.log("Block was clicked");
         if(turnO){
             box.innerText = "O";
@@ -48,9 +54,11 @@ const checkFull = () =>{
     }
     if (state === true){
         msg.innerText = "A tough fight ended in a draw!!";
-        reset.innerHTML = "RESTART";
+        //reset.innerHTML = "RESTART";
+        reset.classList.add("hide");
         msgContainer.classList.remove("hide");
         heading.classList.add("hide");
+        setTimeout(resetGame,2500);
     }
 }
 const enableBox = () => {
@@ -58,6 +66,7 @@ const enableBox = () => {
         box.disabled = false;
         box.innerText = "";
         box.style.backgroundColor = "#99a6b0";
+        box.style.border = "none";
     }
 }
 const disableBox = () => {
@@ -90,6 +99,11 @@ const checkWinner = () => {
             if(pos1value === pos2value && pos2value === pos3value ){
                 console.log("Winner is: ",pos1value );
                 showWinner(pos1value);
+                boxes[pattern[0]].style.border = "5px solid #000080";
+                boxes[pattern[1]].style.border = "5px solid #000080";
+                boxes[pattern[2]].style.border = "5px solid #000080";
+                audioWin.volume = 0.5;
+                audioWin.play();
                 return false;
             }
         }
