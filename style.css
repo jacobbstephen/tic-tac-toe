@@ -51,7 +51,7 @@ h1{
     background-color: #99A6B0;
     height: 9vmin;
     width: 45vmin;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     border: none;
     cursor: pointer;
     border-radius: 1rem;
@@ -66,25 +66,28 @@ h1{
 .hide{
    display: none;
 }
-@media screen  and (max-width: 576px){
-    .game{
-        width: 40vmin;
+@media screen  and (max-width: 768px){
+    .game {
         height: 40vmin;
+        width: 40vmin;
+        flex-wrap: wrap;
     }
-    .box{
-        width: 10vmin;
-        height: 10vmin;
+    .box {
+        height: 12vmin;
+        width: calc(33.33% - 10px); 
+        flex-basis: calc(33.33% - 10px); 
+        font-size: 2rem;
+        margin: 1px; 
     }
-    h1{
-        padding-top: 15px;
-        font-size: 1.5rem;
+    h1 {
+        font-size: 2rem;
     }
-
-    #reset{
-        height: 4vmin;
-        width: 25vmin;
+    #reset {
+        height: 7vmin;
+        width: 35vmin;
+        font-size: 2rem;
     }
-    #msg{
-        font-size: 2.5vmin;
+    #msg {
+        font-size: 4vmin;
     }
 }
