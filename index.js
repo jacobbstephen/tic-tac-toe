@@ -99,9 +99,9 @@ const checkWinner = () => {
             if(pos1value === pos2value && pos2value === pos3value ){
                 console.log("Winner is: ",pos1value );
                 showWinner(pos1value);
-                boxes[pattern[0]].style.border = "5px solid #000080";
-                boxes[pattern[1]].style.border = "5px solid #000080";
-                boxes[pattern[2]].style.border = "5px solid #000080";
+                boxes[pattern[0]].style.border = "5px solid #FFFFFF";
+                boxes[pattern[1]].style.border = "5px solid #FFFFFF";
+                boxes[pattern[2]].style.border = "5px solid #FFFFFF";
                 audioWin.volume = 0.5;
                 audioWin.play();
                 return false;
